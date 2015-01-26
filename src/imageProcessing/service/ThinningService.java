@@ -119,41 +119,39 @@ public class ThinningService {
         }
     }
 
-    ;
-
     private int getA(int[][] binaryImage, int y, int x) {
 
         int count = 0;
         //p2 p3
-        if (binaryImage[y - 1][x] == 0 && binaryImage[y - 1][x + 1] == 1) {
+        if (y - 1 >= 0 && x + 1 < binaryImage[y].length && binaryImage[y - 1][x] == 0 && binaryImage[y - 1][x + 1] == 1) {
             count++;
         }
         //p3 p4
-        if (binaryImage[y - 1][x + 1] == 0 && binaryImage[y][x + 1] == 1) {
+        if (y - 1 >= 0 && x + 1 < binaryImage[y].length && binaryImage[y - 1][x + 1] == 0 && binaryImage[y][x + 1] == 1) {
             count++;
         }
         //p4 p5
-        if (binaryImage[y][x + 1] == 0 && binaryImage[y + 1][x + 1] == 1) {
+        if (y + 1 < binaryImage.length && x + 1 < binaryImage[y].length && binaryImage[y][x + 1] == 0 && binaryImage[y + 1][x + 1] == 1) {
             count++;
         }
         //p5 p6
-        if (binaryImage[y + 1][x + 1] == 0 && binaryImage[y + 1][x] == 1) {
+        if (y + 1 < binaryImage.length && x + 1 < binaryImage[y].length && binaryImage[y + 1][x + 1] == 0 && binaryImage[y + 1][x] == 1) {
             count++;
         }
         //p6 p7
-        if (binaryImage[y + 1][x] == 0 && binaryImage[y + 1][x - 1] == 1) {
+        if (y + 1 < binaryImage.length && x - 1 >= 0 && binaryImage[y + 1][x] == 0 && binaryImage[y + 1][x - 1] == 1) {
             count++;
         }
         //p7 p8
-        if (binaryImage[y + 1][x - 1] == 0 && binaryImage[y][x - 1] == 1) {
+        if (y + 1 < binaryImage.length && x - 1 >= 0 && binaryImage[y + 1][x - 1] == 0 && binaryImage[y][x - 1] == 1) {
             count++;
         }
         //p8 p9
-        if (binaryImage[y][x - 1] == 0 && binaryImage[y - 1][x - 1] == 1) {
+        if (y - 1 >= 0 && x - 1 >= 0 && binaryImage[y][x - 1] == 0 && binaryImage[y - 1][x - 1] == 1) {
             count++;
         }
         //p9 p2
-        if (binaryImage[y - 1][x - 1] == 0 && binaryImage[y - 1][x] == 1) {
+        if (y - 1 >= 0 && x - 1 >= 0 && binaryImage[y - 1][x - 1] == 0 && binaryImage[y - 1][x] == 1) {
             count++;
         }
 
