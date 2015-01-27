@@ -6,7 +6,18 @@ package imageProcessing.service;
  */
 public class BinaryImageSmoothingService {
 
-    public int[][] smoothBinaryImage(int[][] binaryImage) {
+    /**
+     * @param givenImage
+     * @param changeGivenImage decides whether the givenArray should be modified or a clone should be used
+     * @return smoothed binary image
+     */
+    public int[][] smoothBinaryImage(int[][] givenImage, boolean changeGivenImage) {
+        int[][] binaryImage;
+        if (changeGivenImage) {
+            binaryImage = givenImage;
+        } else {
+            binaryImage = givenImage.clone();
+        }
 
         boolean hasChange;
         int filterVal = 0;

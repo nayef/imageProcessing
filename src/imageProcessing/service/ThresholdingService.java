@@ -4,8 +4,8 @@ import imageProcessing.utils.CommonUtils;
 
 /**
  * @author nayef
- * This class is used for thresholding gray level image
- * and get binary image.
+ *         This class is used for thresholding gray level image
+ *         and get binary image.
  */
 
 public class ThresholdingService {
@@ -13,7 +13,7 @@ public class ThresholdingService {
 
     /**
      * @param grayScaleValues
-     * @return the threshold value
+     * @return the global threshold value
      */
     public double getOtsuThreshold(int[] grayScaleValues) {
 
@@ -36,7 +36,7 @@ public class ThresholdingService {
 
     /**
      * @param grayScale2DImage
-     * @return a 2D array after Bernsen’s local gray level thresholding.
+     * @return a 2D binary image array after Bernsen’s local gray level thresholding.
      */
     public int[][] getLocalThresholdedData(final int[][] grayScale2DImage, boolean removeGhosts) {
 
@@ -44,8 +44,8 @@ public class ThresholdingService {
         int[][] fMin = getFMin(grayScale2DImage);
         int[][] g = getG(fMax, fMin);
         int[][] b = getB(grayScale2DImage, g, removeGhosts, fMax, fMin);
-        return b;
 
+        return b;
     }
 
     private int[] getHistogram(int[] grayScaleValues) {
@@ -111,7 +111,6 @@ public class ThresholdingService {
         }
 
         return UT;
-
     }
 
     private double[] getUt(double[] probability) {
@@ -135,7 +134,6 @@ public class ThresholdingService {
         }
 
         return Uo;
-
     }
 
     private double[] getU1(double UT, double[] Ut, double[] Uo) {
@@ -147,7 +145,6 @@ public class ThresholdingService {
         }
 
         return U1;
-
     }
 
     private double getSigmaSqrT(double UT, double[] probability) {
@@ -159,7 +156,6 @@ public class ThresholdingService {
         }
 
         return sigmaSqrT;
-
     }
 
     private double[] getSigmaSqrBt(double[] Wo, double[] W1, double[] U1, double[] Uo) {
@@ -189,6 +185,7 @@ public class ThresholdingService {
                 fMax[y][x] = getMaxNeighbour(grayScale2DImage, y, x);
             }
         }
+
         return fMax;
     }
 
@@ -230,6 +227,7 @@ public class ThresholdingService {
         if (x - 1 >= 0 && max < grayScale2DImage[y][x - 1]) {
             max = grayScale2DImage[y][x - 1];
         }
+
         return max;
     }
 
@@ -299,8 +297,8 @@ public class ThresholdingService {
                 //notice,fMax[y][x]+fMin[y][x]
             }
         }
-        return g;
 
+        return g;
     }
 
 
@@ -332,7 +330,6 @@ public class ThresholdingService {
         }
 
         return b;
-
     }
 
     private int[][] getBWithoutGhostRemoval(int[][] grayScale2DImage, int[][] g) {

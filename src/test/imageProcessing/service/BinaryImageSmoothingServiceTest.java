@@ -26,7 +26,7 @@ public class BinaryImageSmoothingServiceTest {
                 {1, 1, 1, 0, 0, 0, 0}
         };
 
-        int[][] resultData = thinningService.smoothBinaryImage(inputData);
+        int[][] resultData = thinningService.smoothBinaryImage(inputData, false);
 
         int[][] expectedResult = {
                 {0, 0, 0, 0, 0, 0, 0},

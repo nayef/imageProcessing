@@ -1,5 +1,8 @@
 package imageProcessing.utils;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 /**
  * Created by nayef on 1/26/15.
  */
@@ -37,6 +40,15 @@ public class CommonUtils {
         }
 
         return oneD;
+    }
+
+    public static BufferedImage cloneImage(BufferedImage source){
+        BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        Graphics g = b.getGraphics();
+        g.drawImage(source, 0, 0, null);
+        g.dispose();
+
+        return b;
     }
 
 }
