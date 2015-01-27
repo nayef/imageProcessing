@@ -1,4 +1,4 @@
-package test.imageProcessing.service;
+package imageProcessing.service;
 
 import imageProcessing.service.BinaryImageSmoothingService;
 import org.junit.Before;
