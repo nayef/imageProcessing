@@ -50,8 +50,7 @@ public class ThinningServiceTest {
                 {0, 0, 0, 0, 0, 0, 0}
         };
 
-        int[][] resultData = thinningService.doZhangSuenThinning(inputData);
-
+        int[][] resultData = thinningService.doZhangSuenThinning(inputData, false);
         assertArrayEquals(expectedData, resultData);
 
     }

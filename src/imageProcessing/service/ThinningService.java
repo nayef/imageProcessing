@@ -1,5 +1,7 @@
 package imageProcessing.service;
 
+import imageProcessing.model.Point;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,10 +11,19 @@ import java.util.List;
 public class ThinningService {
 
     /**
-     * @param binaryImage
-     * @return 2D array of binary image after thinning using zhang-suen thinning algo
+     * @param givenImage
+     * @param changeGivenImage decides whether the givenArray should be modified or a clone should be used
+     * @return a 2D array of binary image after thinning using zhang-suen thinning algo.
      */
-    public int[][] doZhangSuenThinning(int[][] binaryImage) {
+    public int[][] doZhangSuenThinning(final int[][] givenImage, boolean changeGivenImage) {
+
+        int[][] binaryImage;
+
+        if (changeGivenImage) {
+            binaryImage = givenImage;
+        } else {
+            binaryImage = givenImage.clone();
+        }
         int a, b;
 
         List<Point> pointsToChange = new LinkedList();
@@ -67,10 +78,18 @@ public class ThinningService {
     }
 
     /**
-     * @param binaryImage
-     * @return 2D array of binary image after thinning using hilditch's thinning algo
+     * @param givenImage
+     * @param changeGivenImage decides whether the givenArray should be modified or a clone should be used
+     * @return a 2D array of binary image after thinning using hilditch's thinning algo
      */
-    public int[][] doHilditchsThinning(int[][] binaryImage) {
+    public int[][] doHilditchsThinning(final int[][] givenImage, boolean changeGivenImage) {
+        int[][] binaryImage;
+
+        if (changeGivenImage) {
+            binaryImage = givenImage;
+        } else {
+            binaryImage = givenImage.clone();
+        }
         int a, b;
         boolean hasChange;
         do {
@@ -90,33 +109,6 @@ public class ThinningService {
         } while (hasChange);
 
         return binaryImage;
-    }
-
-
-    private class Point {
-
-        private int x, y;
-
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public void setX(int x) {
-            this.x = x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
     }
 
     private int getA(int[][] binaryImage, int y, int x) {
